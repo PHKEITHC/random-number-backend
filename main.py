@@ -14,7 +14,7 @@ def generate_random_number():
 @app.route('/get_random_question', methods=['GET'])
 def get_random_question():
     """Connect to MongoDB and return a random question as JSON."""
-    uri = os.environ.get('MONGO_URI')  # Set this in Vercel environment variables
+    uri = os.environ.get('MONGO_URI', 'mongodb+srv://chowpakhim:Chowpakhim041221@cluster0.2gqnbuc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
     if not uri:
         return jsonify({"error": "MongoDB URI not configured"}), 500
     
@@ -38,4 +38,4 @@ def get_random_question():
         return jsonify({"error": str(e)}), 500
     
     finally:
-        client.close()  # Close connection after use (good practice for serverless)
+        client.close()  # Close connection after use
