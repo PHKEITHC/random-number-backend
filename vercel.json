@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/generate",
+      "src": "/(.*)",
       "dest": "main.py"
     }
   ]
